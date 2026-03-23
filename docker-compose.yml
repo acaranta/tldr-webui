@@ -1,6 +1,6 @@
 services:
   tldr-webui:
-    build: .
+    image: acaranta/tldr-webui:latest
     ports:
       - "8129:3000"
     volumes:
@@ -12,7 +12,3 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
-
-volumes:
-  tldr-data:
-    driver: local

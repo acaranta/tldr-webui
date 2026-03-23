@@ -111,10 +111,17 @@ Key UI behaviours visible in the layouts above:
 - Docker and Docker Compose (v2)
 - Outbound internet access from the container (to clone tldr-pages on first run)
 
-### Start with Docker Compose
+### Start with Docker Compose (pre-built image)
 
 ```bash
-git clone https://github.com/youruser/tldr-webui.git
+curl -O https://raw.githubusercontent.com/acaranta/tldr-webui/main/docker-compose.yml
+docker compose up -d
+```
+
+### Build from source
+
+```bash
+git clone https://github.com/acaranta/tldr-webui.git
 cd tldr-webui
 docker compose up --build -d
 ```
@@ -126,14 +133,12 @@ On first start, the container clones the tldr-pages repository into the `tldr-da
 ### Start with Docker CLI
 
 ```bash
-docker build -t tldr-webui .
-
 docker run -d \
   --name tldr-webui \
   -p 8129:3000 \
-  -v tldr-data:/tldr-pages \
+  -v ./tldr-data:/tldr-pages \
   --restart unless-stopped \
-  tldr-webui
+  acaranta/tldr-webui:latest
 ```
 
 ---
