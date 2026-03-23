@@ -44,57 +44,13 @@ The application has two distinct layouts depending on whether a search is active
 
 ### Home / hero state (no active search)
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│  [logo] tldr                              [Lang ▾]  [Theme toggle]  │  ← Navbar
-├─────────────────────────────────────────────────────────────────────┤
-│  ⚠ Syncing tldr-pages repository… (amber banner, first-run only)   │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│                        [logo]  tldr                                 │
-│               Simplified man pages for 2000+ commands               │
-│                        across all platforms                         │
-│                                                                     │
-│          ┌─────────────────────────────────────────────┐           │
-│          │  Search commands… try 'ls', 'git', 'curl'  │           │
-│          └─────────────────────────────────────────────┘           │
-│                                                                     │
-│    [common] [linux] [macos] [windows] [android] [freebsd] …        │
-│                                                                     │
-│                   /  or  Ctrl+K  to focus search                    │
-│                                                                     │
-├─────────────────────────────────────────────────────────────────────┤
-│  This is a viewer only. Command pages sourced from tldr-pages CC BY │  ← Footer
-└─────────────────────────────────────────────────────────────────────┘
-```
+![Home screen — hero state with centered search](docs/screenshot-home.png)
 
 ### Results state (query entered)
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│  [logo] tldr                              [Lang ▾]  [Theme toggle]  │
-├────────────────────────┬────────────────────────────────────────────┤
-│ ┌──────────────────┐   │                                            │
-│ │ Search commands… │   │  git                          [common]     │
-│ └──────────────────┘   │  ─────────────────────────────────────    │
-│ [common][linux][macos] │  > Distributed version control system.    │
-│ ─────────────────────  │                                            │
-│ > git           common │  List files changed in the last commit:   │
-│   git-clone     common │  ┌────────────────────────────────────┐   │
-│   git-commit    common │  │ git diff --name-only HEAD~1  HEAD  │[⎘]│
-│   git-log       common │  └────────────────────────────────────┘   │
-│   git-pull      common │                                            │
-│   git-push      common │  Clone a repository:                       │
-│   …                    │  ┌────────────────────────────────────┐   │
-│                        │  │ git clone {{url}}                  │[⎘]│
-│                        │  └────────────────────────────────────┘   │
-│                        │                                            │
-├────────────────────────┴────────────────────────────────────────────┤
-│  This is a viewer only. Command pages sourced from tldr-pages CC BY │
-└─────────────────────────────────────────────────────────────────────┘
-```
+![Results view — split panel with command list and rendered page](docs/screenshot-results.png)
 
-Key UI behaviours visible in the layouts above:
+Key UI behaviours visible in the screenshots above:
 
 - The **amber sync banner** (shown below the navbar) appears only while the container is cloning the tldr-pages repository on first start, and disappears automatically once sync completes.
 - **Platform tabs** (`common`, `linux`, `macos`, `windows`, `android`, `freebsd`, `netbsd`, `openbsd`, `sunos`, `cisco`) are available both on the home screen and in the compact sidebar.

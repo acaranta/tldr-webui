@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 
+export const dynamic = "force-dynamic";
+
 const STATUS_FILE = "/app/tldr-sync.json";
 
 export async function GET() {

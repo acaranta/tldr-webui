@@ -83,8 +83,8 @@
               "children": [
                 {
                   "type": "frame",
-                  "id": "BZgDw",
-                  "name": "tabA",
+                  "id": "OYcWt",
+                  "name": "tabAny",
                   "fill": "#22D3EE",
                   "cornerRadius": 6,
                   "padding": [
@@ -94,12 +94,35 @@
                   "children": [
                     {
                       "type": "text",
-                      "id": "ZZnAD",
+                      "id": "w4gFE",
+                      "name": "anyLbl1",
                       "fill": "#0A0F1C",
-                      "content": "common",
+                      "content": "Any",
                       "fontFamily": "JetBrains Mono",
                       "fontSize": 12,
                       "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "BZgDw",
+                  "name": "tabA",
+                  "fill": "#0F172A",
+                  "cornerRadius": 6,
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZZnAD",
+                      "fill": "#64748B",
+                      "content": "common",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -354,6 +377,106 @@
               "fontWeight": "normal"
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "VkR98",
+          "name": "footer",
+          "width": "fill_container",
+          "height": 36,
+          "fill": "#0A0F1C",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#1E293B"
+          },
+          "gap": 6,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "ppZDe",
+              "name": "ghIcon1",
+              "width": 12,
+              "height": 12,
+              "iconFontName": "github",
+              "iconFontFamily": "lucide",
+              "fill": "#22D3EE"
+            },
+            {
+              "type": "text",
+              "id": "87tmK",
+              "name": "ft1",
+              "fill": "#22D3EE",
+              "content": "tldr-webui",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "zJmu0",
+              "name": "ft2",
+              "fill": "#64748B",
+              "content": "is a viewer only. Command pages sourced from",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "JnOiX",
+              "name": "ft3",
+              "fill": "#22D3EE",
+              "content": "tldr-pages",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "tRMrY",
+              "name": "ft4",
+              "fill": "#64748B",
+              "content": "— CC BY 4.0",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "ZRNE9",
+              "name": "ft5",
+              "fill": "#475569",
+              "content": "·",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "noLHv",
+              "name": "ft6",
+              "fill": "#64748B",
+              "content": "current version:",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "JYwM4",
+              "name": "ft7",
+              "fill": "#22D3EE",
+              "content": "a1b2c3d",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
         }
       ]
     },
@@ -473,8 +596,8 @@
               "children": [
                 {
                   "type": "frame",
-                  "id": "Mtpg8",
-                  "name": "t2A",
+                  "id": "B0BFB",
+                  "name": "tabAny2",
                   "fill": "#22D3EE",
                   "cornerRadius": 6,
                   "padding": [
@@ -484,12 +607,35 @@
                   "children": [
                     {
                       "type": "text",
-                      "id": "GDINL",
+                      "id": "Z1QPx",
+                      "name": "anyLbl2",
                       "fill": "#0A0F1C",
-                      "content": "common",
+                      "content": "Any",
                       "fontFamily": "JetBrains Mono",
                       "fontSize": 12,
                       "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Mtpg8",
+                  "name": "t2A",
+                  "fill": "#0F172A",
+                  "cornerRadius": 6,
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GDINL",
+                      "fill": "#64748B",
+                      "content": "common",
+                      "fontFamily": "JetBrains Mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -1274,6 +1420,141 @@
                       "fontWeight": "normal"
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "j0GDA",
+          "name": "footer2",
+          "width": "fill_container",
+          "height": 36,
+          "fill": "#0A0F1C",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#1E293B"
+          },
+          "gap": 6,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "KZTk2",
+              "name": "g2",
+              "width": 12,
+              "height": 12,
+              "iconFontName": "github",
+              "iconFontFamily": "lucide",
+              "fill": "#22D3EE"
+            },
+            {
+              "type": "text",
+              "id": "SN6TW",
+              "name": "s1",
+              "fill": "#22D3EE",
+              "content": "tldr-webui",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "8md42",
+              "name": "s2",
+              "fill": "#64748B",
+              "content": "is a viewer only. Command pages sourced from",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Q5FaX",
+              "name": "s3",
+              "fill": "#22D3EE",
+              "content": "tldr-pages",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "NsOU5",
+              "name": "s4",
+              "fill": "#64748B",
+              "content": "— CC BY 4.0",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "kylUE",
+              "name": "s5",
+              "fill": "#475569",
+              "content": "·",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "HubMC",
+              "name": "s6",
+              "fill": "#64748B",
+              "content": "current version:",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "AcIfA",
+              "name": "s7",
+              "fill": "#22D3EE",
+              "content": "a1b2c3d",
+              "fontFamily": "JetBrains Mono",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "cFrGZ",
+              "name": "updateBadge",
+              "fill": "#78350F",
+              "cornerRadius": 4,
+              "gap": 4,
+              "padding": [
+                2,
+                6
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "7BHDb",
+                  "name": "bdgIcon",
+                  "width": 10,
+                  "height": 10,
+                  "iconFontName": "refresh-cw",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FCD34D"
+                },
+                {
+                  "type": "text",
+                  "id": "tYejy",
+                  "name": "bdgText",
+                  "fill": "#FCD34D",
+                  "content": "update available",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
                 }
               ]
             }
