@@ -50,6 +50,14 @@ The application has two distinct layouts depending on whether a search is active
 
 ![Results view — split panel with command list and rendered page](docs/screenshot-results.png)
 
+### Mobile / portrait view
+
+On narrow screens the sidebar and content panel are shown one at a time. Tapping a result collapses the list to show full-width content; a **← results** button at the top brings the list back.
+
+| Home | Results — list | Results — content |
+|:----:|:--------------:|:-----------------:|
+| ![Mobile home screen](docs/screenshot-mobile-home.png) | ![Mobile results list](docs/screenshot-mobile-list.png) | ![Mobile command content](docs/screenshot-mobile-content.png) |
+
 Key UI behaviours visible in the screenshots above:
 
 - The **amber sync banner** (shown below the navbar) appears only while the container is cloning the tldr-pages repository on first start, and disappears automatically once sync completes.
