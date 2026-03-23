@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { ChevronLeft } from "lucide-react";
 import { SearchBar } from "@/components/SearchBar";
 import { PlatformSelector } from "@/components/PlatformSelector";
 import { CommandDisplay } from "@/components/CommandDisplay";
@@ -20,6 +21,7 @@ export default function Home() {
   const [pageLoading, setPageLoading] = useState(false);
   const [searching, setSearching] = useState(false);
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("syncing");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const debounceRef = useRef<NodeJS.Timeout>();
 
   // Track sync status so we can show contextual messages
@@ -78,6 +80,10 @@ export default function Home() {
     setSelectedCommand(cmd);
     setPageLoading(true);
     setPage(null);
+    // On narrow screens (portrait mobile) collapse the sidebar so content is readable
+    if (typeof window !== "undefined" && window.innerWidth < 640) {
+      setSidebarOpen(false);
+    }
     try {
       const res = await fetch(
         `/api/page?command=${encodeURIComponent(cmd.command)}&platform=${cmd.platform}&lang=${lang}`
@@ -94,13 +100,21 @@ export default function Home() {
 
   const hasQuery = query.trim().length > 0;
 
+  // Re-open sidebar whenever a new search starts (query transitions hero→results)
+  useEffect(() => {
+    if (hasQuery) setSidebarOpen(true);
+  }, [hasQuery]);
+
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {hasQuery ? (
         /* Results layout */
         <div className="flex flex-1 min-h-0">
-          {/* Left panel */}
-          <div className="flex flex-col w-72 shrink-0 border-r border-border">
+          {/* Left panel — hidden on mobile when collapsed */}
+          <div className={cn(
+            "flex flex-col w-full sm:w-72 shrink-0 border-r border-border",
+            !sidebarOpen && "hidden sm:flex"
+          )}>
             <div className="p-3 border-b border-border bg-card/50">
               <SearchBar
                 value={query}
@@ -178,8 +192,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right panel */}
-          <div className="flex-1 overflow-y-auto p-8">
+          {/* Right panel — hidden on mobile when sidebar is open */}
+          <div className={cn(
+            "flex-1 overflow-y-auto p-4 sm:p-8",
+            sidebarOpen && "hidden sm:block"
+          )}>
+            {/* Mobile-only back button */}
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="sm:hidden flex items-center gap-1 mb-4 text-sm text-muted-foreground hover:text-foreground font-mono transition-colors"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              results
+            </button>
             {pageLoading && (
               <p className="text-sm text-muted-foreground font-mono animate-pulse">
                 Loading…
