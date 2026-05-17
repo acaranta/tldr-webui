@@ -1,15 +1,12 @@
-import withPWA from "@ducanh2912/next-pwa";
+import withSerwistInit from "@serwist/next";
 
-const pwaConfig = withPWA({
-  dest: "public",
-  cacheOnFrontEndNav: true,
-  aggressiveFrontEndNavCaching: true,
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts",
+  swDest: "public/sw.js",
+  cacheOnNavigation: true,
   reloadOnOnline: true,
-  swcMinify: true,
+  // Disable the service worker in development to avoid stale caches.
   disable: process.env.NODE_ENV === "development",
-  workboxOptions: {
-    disableDevLogs: true,
-  },
 });
 
 /** @type {import('next').NextConfig} */
@@ -17,4 +14,4 @@ const nextConfig = {
   output: "standalone",
 };
 
-export default pwaConfig(nextConfig);
+export default withSerwist(nextConfig);

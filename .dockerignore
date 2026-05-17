@@ -34,15 +34,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# PWA
+# PWA (Serwist service worker, generated at build time)
 /public/sw.js
 /public/sw.js.map
-/public/workbox-*.js
-/public/workbox-*.js.map
-/public/worker-*.js
-/public/worker-*.js.map
-/public/fallback-*.js
-/public/fallback-*.js.map
+/public/swe-worker-*.js
 
 # tldr-pages (mounted as volume)
 /tldr-pages
