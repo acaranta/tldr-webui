@@ -11,7 +11,6 @@ interface CommandDisplayProps {
   content: string;
   fallback: boolean;
   platform: string;
-  lang: string;
   selectedLang: string;
 }
 
@@ -68,7 +67,6 @@ export function CommandDisplay({
   content,
   fallback,
   platform,
-  lang,
   selectedLang,
 }: CommandDisplayProps) {
   const selectedLangName = LANGUAGES.find((l) => l.code === selectedLang)?.name;
@@ -148,7 +146,7 @@ export function CommandDisplay({
                 </li>
               );
             },
-            code: ({ children, className }) => {
+            code: ({ children }) => {
               // Inline code in blockquote/description
               return (
                 <code className="font-mono text-sm text-primary bg-secondary/50 px-1 rounded">

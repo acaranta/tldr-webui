@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { Loader2, AlertCircle } from "lucide-react";
 
 type SyncStatus = "syncing" | "ready" | "error";
 
@@ -9,8 +9,6 @@ export function SyncBanner() {
   const [status, setStatus] = useState<SyncStatus | null>(null);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-
     async function checkStatus() {
       try {
         const res = await fetch("/api/sync-status");
@@ -25,8 +23,8 @@ export function SyncBanner() {
       }
     }
 
+    const interval = setInterval(checkStatus, 3000);
     checkStatus();
-    interval = setInterval(checkStatus, 3000);
     return () => clearInterval(interval);
   }, []);
 

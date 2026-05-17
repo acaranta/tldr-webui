@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft } from "lucide-react";
 import { SearchBar } from "@/components/SearchBar";
 import { PlatformSelector } from "@/components/PlatformSelector";
@@ -22,11 +22,9 @@ export default function Home() {
   const [searching, setSearching] = useState(false);
   const [syncStatus, setSyncStatus] = useState<SyncStatus>("syncing");
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const debounceRef = useRef<NodeJS.Timeout>();
 
   // Track sync status so we can show contextual messages
   useEffect(() => {
-    let interval: NodeJS.Timeout;
     async function check() {
       try {
         const res = await fetch("/api/sync-status");
@@ -38,22 +36,17 @@ export default function Home() {
         clearInterval(interval);
       }
     }
+    const interval = setInterval(check, 3000);
     check();
-    interval = setInterval(check, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  // Debounced search
+  // Debounced search — fires when the query, platform, or language changes.
+  // Input-driven state resets live in handleQueryChange (an event handler) so
+  // this effect contains no synchronous setState calls.
   useEffect(() => {
-    clearTimeout(debounceRef.current);
-    if (!query.trim()) {
-      setResults([]);
-      setSelectedCommand(null);
-      setPage(null);
-      return;
-    }
-    setSearching(true);
-    debounceRef.current = setTimeout(async () => {
+    if (!query.trim()) return;
+    const handle = setTimeout(async () => {
       try {
         const res = await fetch(
           `/api/commands?q=${encodeURIComponent(query)}&platform=${platform}&lang=${lang}`
@@ -72,9 +65,25 @@ export default function Home() {
         setSearching(false);
       }
     }, 200);
-    return () => clearTimeout(debounceRef.current);
+    return () => clearTimeout(handle);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, platform, lang]);
+
+  // Search-input changes are handled here rather than in an effect: setting
+  // state in an event handler is the React-recommended pattern and keeps the
+  // debounced-search effect free of cascading-render setState calls.
+  function handleQueryChange(value: string) {
+    setQuery(value);
+    if (value.trim()) {
+      setSidebarOpen(true);
+      setSearching(true);
+    } else {
+      setResults([]);
+      setSelectedCommand(null);
+      setPage(null);
+      setSearching(false);
+    }
+  }
 
   async function selectCommand(cmd: CommandEntry) {
     setSelectedCommand(cmd);
@@ -100,11 +109,6 @@ export default function Home() {
 
   const hasQuery = query.trim().length > 0;
 
-  // Re-open sidebar whenever a new search starts (query transitions hero→results)
-  useEffect(() => {
-    if (hasQuery) setSidebarOpen(true);
-  }, [hasQuery]);
-
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {hasQuery ? (
@@ -118,7 +122,7 @@ export default function Home() {
             <div className="p-3 border-b border-border bg-card/50">
               <SearchBar
                 value={query}
-                onChange={setQuery}
+                onChange={handleQueryChange}
                 placeholder="Search commands..."
                 variant="compact"
                 autoFocus
@@ -215,7 +219,6 @@ export default function Home() {
                 content={page.content}
                 fallback={page.fallback}
                 platform={page.platform}
-                lang={page.lang}
                 selectedLang={lang}
               />
             )}
@@ -251,7 +254,7 @@ export default function Home() {
 
           <SearchBar
             value={query}
-            onChange={setQuery}
+            onChange={handleQueryChange}
             placeholder="Search commands… try 'ls', 'git', 'curl'"
             variant="hero"
             className="w-full max-w-2xl"

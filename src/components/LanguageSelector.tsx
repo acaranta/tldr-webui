@@ -10,8 +10,6 @@ interface LanguageSelectorProps {
 }
 
 export function LanguageSelector({ value, onChange }: LanguageSelectorProps) {
-  const current = LANGUAGES.find((l) => l.code === value);
-
   return (
     <div className="relative">
       <select
